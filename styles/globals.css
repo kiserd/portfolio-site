@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .imgBorder {
-  @apply border-2 border-blue-600 rounded-md;
+  @apply rounded-md;
 }
