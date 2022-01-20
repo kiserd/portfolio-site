@@ -8,13 +8,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^12.0.4",
+    "imagemin-mozjpeg": "^10.0.0",
+    "next": "^12.0.8",
+    "next-compose-plugins": "^2.2.1",
+    "next-optimized-images": "^2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
-    "tailwindcss": "^3.0.12"
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.15"
   }
 }

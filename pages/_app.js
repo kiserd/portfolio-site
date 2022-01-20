@@ -1,5 +1,5 @@
 // component
-import { Layout } from '../components/Layout'
+import Layout from '../components/Layout'
 // styles
 import '../styles/globals.css'
 
