@@ -10,19 +10,11 @@ const personal = () => {
     const weddDesc = 'The last 10-years with Marina has been an unbelievable joy';
     const weddSrc = '/images/wedding2.jpg';
   return (
-    <div className='grid grid-rows-4 justify-items-center bg-custom-cool-extraLight'>
-        <div className='w-3/4 p-2 flex self-center row-span-1'>
-            <PersonalCard source={marinaSrc} desc={marinaDesc}/>
-        </div>
-        <div className='w-3/4 p-2 flex justify-center row-span-1'>
-            <PersonalCard source={nellSrc} desc={nellDesc} reverse={true}/>
-        </div>
-        <div className='w-3/4 p-2 flex justify-center row-span-1'>
-            <PersonalCard source={zeekSrc} desc={zeekDesc}/>
-        </div>
-        <div className='w-3/4 p-2 flex justify-center row-span-1'>
-            <PersonalCard source={weddSrc} desc={weddDesc} reverse={true}/>
-        </div>
+    <div className='flex flex-col justify-start justify-items-center bg-custom-background'>
+        <PersonalCard source={marinaSrc} desc={marinaDesc} />
+        <PersonalCard source={nellSrc} desc={nellDesc} />
+        <PersonalCard source={zeekSrc} desc={zeekDesc} />
+        <PersonalCard source={weddSrc} desc={weddDesc} />
     </div>
   )
 }

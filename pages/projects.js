@@ -1,59 +1,79 @@
 import TechIcon from "../components/TechIcon";
+import ProjectCard from "../components/ProjectCard";
 
 const projects = () => {
     const myProjects = [
         {
+            'id': 1,
             'name': 'Small Shell',
             'course': 'Operating Systems I (CS344)',
-            'date': '01/24/2021',
+            'date': 'January 2021',
             'description': 'Light-weight shell, imitating a handful of bash\'s well-known features',
             'repo': 'https://github.com/kiserd/osu/tree/main/cs344-operating-systems',
             'spec': '/images/smallsh.pdf',
             'snippet': '/snippets/smallsh.png',
             'technologies': [{'name': 'C', 'icon': '/icons/c.png'}],
             'keywords': ['low-level programming', 'linux', 'operating systems']
+        },
+        {
+            'id': 2,
+            'name': 'Ethical Eating',
+            'course': 'Software Engineering I (CS361)',
+            'date': 'December 2020',
+            'description': 'Users can explore the underlying ethics of popular dishes',
+            'repo': 'https://github.com/kiserd/osu/tree/main/cs361-software-engineering-I',
+            'spec': '',
+            'snippet': '/snippets/ethical-eating.png',
+            'technologies': [
+                {'name': 'javascript', 'icon': '/icons/js.png'},
+                {'name': 'node', 'icon': '/icons/node.jpg'},
+                {'name': 'heroku', 'icon': '/icons/heroku.png'},
+                {'name': 'postgresql', 'icon': '/icons/postgresql.png'},
+                {'name': 'handlebars', 'icon': '/icons/handlebars.png'},
+
+            ],
+            'keywords': ['web-development']
+        },
+        {
+            'id': 3,
+            'name': 'Wastegram',
+            'course': 'Mobile Development (CS492)',
+            'date': 'August 2021',
+            'description': 'Small businesses can leverage technology in tracking and sharing their food waste',
+            'repo': 'https://github.com/kiserd/osu/tree/main/cs492-mobile-development/wasteagram',
+            'spec': '',
+            'snippet': '/snippets/wastegram.png',
+            'technologies': [
+                {'name': 'flutter', 'icon': '/icons/flutter.png'},
+                {'name': 'dart', 'icon': '/icons/dart.png'},
+                {'name': 'firebase', 'icon': '/icons/firebase.png'}
+            ],
+            'keywords': ['mobile-development']
+        },
+        {
+            'id': 4,
+            'name': 'Sudoku',
+            'course': 'Algorithms (CS325)',
+            'date': 'December 2020',
+            'description': 'Choose an NP-complete problem, implement an example, and illustrate polynomial-time verification',
+            'repo': 'https://github.com/kiserd/osu/tree/main/cs325-algorithms',
+            'spec': '',
+            'snippet': '/snippets/sudoku.jpg',
+            'technologies': [
+                {'name': 'python', 'icon': '/icons/python.png'},
+                {'name': 'django', 'icon': '/icons/django.png'},
+                {'name': 'sqlite', 'icon': '/icons/sqlite.png'},
+                {'name': 'heroku', 'icon': '/icons/heroku.png'}
+            ],
+            'keywords': ['algorithms']
         }
     ];
   return ( 
-    <div className='grid grid-rows-4 justify-items-center bg-custom-background'>
-        <div className='w-3/4 p-2 mb-2 flex self-center row-span-1 bg-custom-card rounded-md hover:bg-custom-hover'>
-            <div className='grid grid-cols-3'>
-                <div className='col-start-1 col-span-1'>
-                    <img className='object-left object-none imgBorder' src={myProjects[0].snippet} alt=''/>
-                </div>
-                <div className='col-start-2 col-span-2 self-start'>
-                    <div className='pt-1 pl-6 text-xl font-bold text-custom-text-primary'>
-                        {myProjects[0].name}
-                    </div>
-                    <div className='pl-6 flex flex-wrap'>
-                        <TechIcon source={myProjects[0].technologies[0].icon} />
-                        <TechIcon source={'/icons/python.png'} />
-                    </div>
-                    <div className='pl-6 text-md text-left text-custom-text-secondary'>
-                        {myProjects[0].description}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className='w-3/4 p-2 mb-2 flex self-center row-span-1 bg-custom-card rounded-md'>
-            <div className='grid grid-cols-3'>
-                <div className='col-start-1 col-span-1'>
-                    <img className='object-left object-none imgBorder' src={myProjects[0].snippet} alt='' />
-                </div>
-                <div className='col-start-2 col-span-2 self-start'>
-                    <div className='pt-1 pl-6 text-xl font-bold text-custom-cool-extraLight'>
-                        {myProjects[0].name}
-                    </div>
-                    <div className='pl-6 flex flex-wrap'>
-                        <TechIcon source={myProjects[0].technologies[0].icon} />
-                        <TechIcon source={'/icons/python.png'} />
-                    </div>
-                    <div className='pl-6 text-md text-left text-custom-text-secondary'>
-                        Description: {myProjects[0].description}
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div className='flex flex-col justify-items-center bg-custom-background'>
+        <ProjectCard project={myProjects[0]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[1]} objectFit='object-center' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[2]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[3]} objectFit='object-left' />
     </div>
   )
 }
