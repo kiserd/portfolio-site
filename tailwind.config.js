@@ -27,6 +27,9 @@ module.exports = {
         'custom-hover': '#3A3B3C',
         'custom-text-primary': '#E4E6EB',
         'custom-text-secondary': '#B0B3B8'
+      },
+      width: {
+        '22': '5.5rem',
       }
     },
   },

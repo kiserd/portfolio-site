@@ -1,4 +1,5 @@
 import PersonalCard from "../components/PersonalCard";
+import PersonalCollage from "../components/PersonalCollage";
 
 const personal = () => {
     const marinaDesc = 'My wife, Marina, works as a Case Manager within the foster community';
@@ -10,11 +11,8 @@ const personal = () => {
     const weddDesc = 'The last 10-years with Marina has been an unbelievable joy';
     const weddSrc = '/images/wedding2.jpg';
   return (
-    <div className='flex flex-col justify-start justify-items-center bg-custom-background'>
-        <PersonalCard source={marinaSrc} desc={marinaDesc} />
-        <PersonalCard source={nellSrc} desc={nellDesc} />
-        <PersonalCard source={zeekSrc} desc={zeekDesc} />
-        <PersonalCard source={weddSrc} desc={weddDesc} />
+    <div className='flex flex-col justify-start justify-items-center'>
+        <PersonalCollage />
     </div>
   )
 }

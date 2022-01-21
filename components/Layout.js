@@ -3,7 +3,7 @@ import Nav from './Nav'
 const Layout = ({ children }) => {
     return (
         <div>
-            <main>
+            <main className='min-h-screen bg-custom-background'>
                 <Nav />
                 {children}
             </main>
