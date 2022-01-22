@@ -102,16 +102,68 @@ const projects = () => {
                 {'name': 'python', 'icon': '/icons/python.png'}
             ],
             'keywords': ['database']
+        },
+        {
+            'id': 7,
+            'name': 'Project Matcher',
+            'course': 'Capstone (CS467)',
+            'date': 'December 2021',
+            'description': 'Simple project matching web app',
+            'repo': 'https://github.com/kiserd/OSU-CS467-Capstone-Project',
+            'spec': '',
+            'snippet': '/icons/next.png',
+            'technologies': [
+                {'name': 'next', 'icon': '/icons/next.png'},
+                {'name': 'react', 'icon': '/icons/react.png'},
+                {'name': 'firebase', 'icon': '/icons/firebase.png'},
+                {'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+                {'name': 'jest', 'icon': '/icons/jest.png'},
+            ],
+            'keywords': ['database']
+        },
+        {
+            'id': 8,
+            'name': 'Low-level I/O',
+            'course': 'Computer Architecture and Assembly Language (CS271)',
+            'date': 'June 2020',
+            'description': 'Get, process, and return user input using assembly language',
+            'repo': 'https://github.com/kiserd/osu/tree/main/cs271-architecture-and-assembly-language',
+            'spec': '',
+            'snippet': '/icons/x86.png',
+            'technologies': [
+                {'name': 'x86', 'icon': '/icons/x86.png'},
+            ],
+            'keywords': ['database']
+        },
+        {
+            'id': 9,
+            'name': 'Portfolio Website',
+            'course': 'NA',
+            'date': 'January 2022',
+            'description': 'This is getting a little meta...',
+            'repo': 'https://github.com/kiserd/portfolio-site',
+            'spec': '',
+            'snippet': '/icons/react.png',
+            'technologies': [
+                {'name': 'react', 'icon': '/icons/react.png'},
+                {'name': 'next', 'icon': '/icons/next.png'},
+                {'name': 'aws', 'icon': '/icons/aws.png'},
+                {'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+            ],
+            'keywords': ['database']
         }
     ];
   return ( 
     <div className='flex flex-col justify-items-center bg-custom-background'>
         <ProjectCard project={myProjects[0]} objectFit='object-left' objectScaling='object-scale-down' />
-        <ProjectCard project={myProjects[1]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[6]} objectFit='object-left' objectScaling='object-scale-down' />
         <ProjectCard project={myProjects[2]} objectFit='object-left' objectScaling='object-scale-down' />
-        <ProjectCard project={myProjects[3]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[7]} objectFit='object-left' objectScaling='object-scale-down' />
         <ProjectCard project={myProjects[4]} objectFit='object-left' objectScaling='object-scale-down' />
         <ProjectCard project={myProjects[5]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[1]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[3]} objectFit='object-left' objectScaling='object-scale-down' />
+        <ProjectCard project={myProjects[8]} objectFit='object-left' objectScaling='object-scale-down' />
     </div>
   )
 }
