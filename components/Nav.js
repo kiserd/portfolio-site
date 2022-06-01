@@ -6,7 +6,7 @@ import SocialIcon from './SocialIcon'
 const Nav = () => {
     return (
         <nav className='grid grid-rows-3 p-5 pb-7 bg-custom-background'>
-            <div className='pb-1 row-span-1 flex justify-center text-2xl font-semibold text-custom-text-primary'>
+            <div className='pb-1 row-span-1 flex justify-center text-4xl font-semibold text-custom-text-primary'>
                 D. LOGAN KISER
             </div>
             <div className='pb-1 row-span-1 flex justify-center text-xl font-light text-custom-text-secondary'>
