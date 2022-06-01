@@ -4,15 +4,21 @@ import Image from 'next/image'
 // component
 import TechIcon from "./TechIcon";
 
-const ProjectCard = ({ projectId, project, objectFit, objectScaling='object-none' }) => {
+const ProjectCard = ({ projectId, objectFit, objectScaling='object-none' }) => {
     let imgStyle = objectScaling + ' ' + objectFit + ' ' + 'rounded-md + max-h-40 max-w-40';
 
     const [projectData, setProjectData] = useState({});
+    const [technologies, setTechnologies] = useState([])
 
     useEffect(() => {
         fetch(`/api/getProjectById/${projectId}`).then((queryResult) => {
             queryResult.json().then((projectObject) => {
                 setProjectData(projectObject.project);
+            })
+        })
+        fetch(`/api/getTechnologiesByProjectId/${projectId}`).then((queryResult) => {
+            queryResult.json().then((technologiesObject) => {
+                setTechnologies(technologiesObject.technologies);
             })
         })
     }, []);
@@ -32,9 +38,9 @@ const ProjectCard = ({ projectId, project, objectFit, objectScaling='object-none
                         {projectData.name}
                     </div>
                     <div className='pl-6 flex flex-wrap relative'>
-                        {project.technologies.map((technology) => {
+                        {technologies.map((technology) => {
                             return (
-                                <TechIcon key={technology.name} source={technology.icon} />
+                                <TechIcon key={technology.id} source={technology.icon} />
                             )
                         })}
                         <a href={projectData.repo}>
@@ -50,8 +56,8 @@ const ProjectCard = ({ projectId, project, objectFit, objectScaling='object-none
                     {/* <div className='pl-6 text-md text-left text-custom-text-secondary hover:text-custom-text-primary'>
                         <a href={project.repo}>GitHub Repo</a>
                     </div> */}
-                    <div className='pl-6 pt-3 text-base font-light text-left text-custom-text-secondary'>
-                        {project['description']}
+                    <div className='pl-6 pt-2 text-base font-light text-left text-custom-text-secondary'>
+                        {projectData.description}
                     </div>
                 </div>
             </div>
