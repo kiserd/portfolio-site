@@ -5,3 +5,7 @@
 .imgBorder {
   @apply rounded-md;
 }
+
+.projectNameDiv {
+  @apply pl-6 text-3xl font-bold text-custom-text-primary;
+}

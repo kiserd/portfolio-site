@@ -1,12 +1,11 @@
 // library
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 // component
 import TechIcon from "./TechIcon";
 
-const ProjectCard = ({ projectId, objectFit, objectScaling='object-none' }) => {
-    let imgStyle = objectScaling + ' ' + objectFit + ' ' + 'rounded-md + max-h-40 max-w-40';
-
+const ProjectCard = ({ projectId }) => {
     const [projectData, setProjectData] = useState({});
     const [technologies, setTechnologies] = useState([])
 
@@ -23,8 +22,10 @@ const ProjectCard = ({ projectId, objectFit, objectScaling='object-none' }) => {
         })
     }, []);
 
+    const router = useRouter()
+
   return (
-      <div className='w-3/4 max-w-xl max-h-fit p-2 mb-4 flex self-center bg-custom-card rounded-md hover:bg-custom-hover'>
+      <div className='w-3/4 max-w-xl max-h-fit p-2 mb-4 flex self-center bg-custom-card rounded-md hover:bg-custom-hover' onClick={() => router.push('/projectDetails/' + projectId)}>
             <div className='flex'>
                 <div className='w-32 h-32 shrink-0 relative'>
                     <Image 
@@ -34,7 +35,7 @@ const ProjectCard = ({ projectId, objectFit, objectScaling='object-none' }) => {
                     />
                 </div>
                 <div className='self-start'>
-                    <div className='pt-1 pl-6 text-3xl font-bold text-custom-text-primary'>
+                    <div className='projectNameDiv'>
                         {projectData.name}
                     </div>
                     <div className='pl-6 flex flex-wrap relative'>

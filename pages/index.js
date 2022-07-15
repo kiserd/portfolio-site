@@ -1,4 +1,5 @@
 // library
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 // component
 import ProjectCard from "../components/ProjectCard";
@@ -20,14 +21,12 @@ const Projects = ({ ids }) => {
 
 
     return ( 
-        <div className='flex flex-col justify-items-center bg-custom-background'>
+        <div className='flex flex-col justify-items-center'>
             {ids.map((id) => {
                 return (
                     <ProjectCard
                     key={id}
                     projectId={id}
-                    objectFit='object-left'
-                    objectScaling='object-scale-down'
                     />
                 )
             })}

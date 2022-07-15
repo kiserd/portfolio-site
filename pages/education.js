@@ -22,7 +22,7 @@ const education = () => {
         },
     ]
     return (
-        <div className='flex flex-col justify-items-center bg-custom-background'>
+        <div className='flex flex-col justify-items-center'>
             <EducationCard edu={eduList[0]} />
             <EducationCard edu={eduList[1]} />
         </div>
