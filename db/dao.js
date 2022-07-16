@@ -7,15 +7,31 @@ const create = async (table, data) => {
         TableName: table,
         Item: data,
     }
-    db.put(params, (err, data) => {
-        if (err) console.log(err);
-        else {
-            console.log(data);
-            return data;
-        }
-    });
+    try {
+        const data = db.put(params).promise();
+        return data;
+    }
+    catch (err) {
+        console.log('Failure: ', err.message);
+        return null;
+    }
+}
+
+const readAll = async (table) => {
+    const params = {
+        TableName: table,
+    }
+    try {
+        const data = await db.scan(params).promise();
+        return data.Items;
+    }
+    catch (err) {
+        console.log('Failed: ', err.message);
+        return null;
+    }
 }
 
 export {
     create,
+    readAll,
 }
