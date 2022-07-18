@@ -8,6 +8,9 @@ const Projects = ({ ids }) => {
 
     const [projectIds, setProjectIds] = useState([]);
 
+    console.log('spesh ids: ', ids);
+    ids.forEach((id) => console.log('id: ', id));
+
     // useEffect(() => {
     //     let isMounted = true;
     //     fetch('/api/getProjectIds').then((projectRecords) => {
@@ -37,10 +40,9 @@ const Projects = ({ ids }) => {
 export default Projects;
 
 export async function getServerSideProps() {
-    const res = await fetch('http://localhost:3000/api/getProjectIds');
-    console.log('ids: ', res);
+    const res = await fetch('http://localhost:3000/api/getProjects');
     const data = await res.json();
-    console.log('data: ', data);
-    console.log('data[records]: ', data['records']);
-    return {props: {ids: data['records']}};
+    const ids = data.records.map((project) => project.id);
+    // console.log('ids: ', ids);
+    return {props: {ids: ids}};
 }

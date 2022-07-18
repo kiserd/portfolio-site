@@ -10,16 +10,17 @@ const ProjectCard = ({ projectId }) => {
     const [technologies, setTechnologies] = useState([])
 
     useEffect(() => {
+        console.log('ProjectCard useEffect() hit');
         fetch(`/api/getProjectById/${projectId}`).then((queryResult) => {
             queryResult.json().then((projectObject) => {
-                setProjectData(projectObject.project);
+                setProjectData(projectObject.project.Item);
             })
         })
-        fetch(`/api/getTechnologiesByProjectId/${projectId}`).then((queryResult) => {
-            queryResult.json().then((technologiesObject) => {
-                setTechnologies(technologiesObject.technologies);
-            })
-        })
+        // fetch(`/api/getTechnologiesByProjectId/${projectId}`).then((queryResult) => {
+        //     queryResult.json().then((technologiesObject) => {
+        //         setTechnologies(technologiesObject.technologies);
+        //     })
+        // })
     }, []);
 
     const router = useRouter()
