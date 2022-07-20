@@ -8,9 +8,6 @@ const Projects = ({ ids }) => {
 
     const [projectIds, setProjectIds] = useState([]);
 
-    console.log('spesh ids: ', ids);
-    ids.forEach((id) => console.log('id: ', id));
-
     // useEffect(() => {
     //     let isMounted = true;
     //     fetch('/api/getProjectIds').then((projectRecords) => {

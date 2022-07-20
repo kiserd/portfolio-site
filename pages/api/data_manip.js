@@ -1,40 +1,73 @@
-import { create } from '../../db/dao'
+import { create, deleteRecord } from '../../db/dao'
 import db from '../../db/db';
 
+// DELETE: handler to mass delete all projects
+// export default async function handler (req, res) {
+//   myProjects.forEach((project) => deleteRecord('projects', project.id));
+//   res.status(200).json({awesome: 'msg'});
+// }
 
-export default async function handler (req, res) {
-    const techList = [];
-    myProjects.forEach((project) => {
-        project.technologies.forEach((tech) => {
-            techList.push(tech);
-        })
-    })
-    console.log('techList: ', techList);
-  res.status(200).json({awesome: 'msg'});
+// CREATE: handler to mass create all projects
+// export default async function handler (req, res) {
+//   myProjects.forEach((project) => create('projects', project));
+//   res.status(200).json({awesome: 'msg'});
+// }
+
+// CREATE: handler to mass create all technologies
+// export default async function handler (req, res) {
+//   myTechnologies.forEach((tech) => create('technologies', tech));
+//   res.status(200).json({awesome: 'msg'});
+// }
+
+// CREATE: handler to create new project
+// export default async function handler (req, res) {
+//     create('projects', newProject);
+//     res.status(200).json({awesome: 'msg'});
+// }
+
+const newProject = {
+    'id': 'mealcost',
+    'name': 'Meal Cost',
+    'course': 'NA',
+    'date': 'July 2022',
+    'description': 'Track the cost of meals and ingredients',
+    'repo': 'https://github.com/kiserd/meal-cost',
+    'spec': '',
+    'snippet': '/icons/flask.svg',
+    'technologies': [
+        {id: 'flask', 'name': 'flask', 'icon': '/icons/flask.svg'},
+        {id: 'python', name: 'python', icon: '/icons/python.png' },
+        {id: 'aws', 'name': 'aws', 'icon': '/icons/aws.png'},
+        {id: 'tailwind', 'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+        {id: 'aws', name: 'aws', icon: '/icons/aws.png' },
+        {id: 'react', name: 'react', icon: '/icons/react.png' },
+    ],
+    'keywords': ['API']
 }
 
 const myTechnologies = [
-  {id: 'c', name: 'C', icon: '/icons/c.png' },
-  {id: 'linux', name: 'linux', icon: '/icons/linux.png' },
-  {id: 'javascript', name: 'javascript', icon: '/icons/js.png' },
-  {id: 'node', name: 'node', icon: '/icons/node.png' },
-  {id: 'heroku', name: 'heroku', icon: '/icons/heroku.png' },
-  {id: 'postgresql', name: 'postgresql', icon: '/icons/postgresql.png' },
-  {id: 'handlebars', name: 'handlebars', icon: '/icons/handlebars.png' },
-  {id: 'flutter', name: 'flutter', icon: '/icons/flutter.png' },
-  {id: 'dart', name: 'dart', icon: '/icons/dart.png' },
-  {id: 'firebase', name: 'firebase', icon: '/icons/firebase.png' },
-  {id: 'android', name: 'android', icon: '/icons/android.png' },
-  {id: 'python', name: 'python', icon: '/icons/python.png' },
-  {id: 'django', name: 'django', icon: '/icons/django.png' },
-  {id: 'sqlite', name: 'sqlite', icon: '/icons/sqlite.png' },
-  {id: 'next', name: 'next', icon: '/icons/next.png' },
-  {id: 'react', name: 'react', icon: '/icons/react.png' },
-  {id: 'firebase', name: 'firebase', icon: '/icons/firebase.png' },
-  {id: 'tailwind', name: 'tailwind', icon: '/icons/tailwind.png' },
-  {id: 'jest', name: 'jest', icon: '/icons/jest.png' },
-  {id: 'x86', name: 'x86', icon: '/icons/x86.png' },
-  {id: 'aws', name: 'aws', icon: '/icons/aws.png' },
+    {id: 'c', name: 'C', icon: '/icons/c.png' },
+    {id: 'linux', name: 'linux', icon: '/icons/linux.png' },
+    {id: 'javascript', name: 'javascript', icon: '/icons/js.png' },
+    {id: 'node', name: 'node', icon: '/icons/node.png' },
+    {id: 'heroku', name: 'heroku', icon: '/icons/heroku.png' },
+    {id: 'postgresql', name: 'postgresql', icon: '/icons/postgresql.png' },
+    {id: 'handlebars', name: 'handlebars', icon: '/icons/handlebars.png' },
+    {id: 'flutter', name: 'flutter', icon: '/icons/flutter.png' },
+    {id: 'dart', name: 'dart', icon: '/icons/dart.png' },
+    {id: 'firebase', name: 'firebase', icon: '/icons/firebase.png' },
+    {id: 'android', name: 'android', icon: '/icons/android.png' },
+    {id: 'python', name: 'python', icon: '/icons/python.png' },
+    {id: 'django', name: 'django', icon: '/icons/django.png' },
+    {id: 'sqlite', name: 'sqlite', icon: '/icons/sqlite.png' },
+    {id: 'next', name: 'next', icon: '/icons/next.png' },
+    {id: 'react', name: 'react', icon: '/icons/react.png' },
+    {id: 'firebase', name: 'firebase', icon: '/icons/firebase.png' },
+    {id: 'tailwind', name: 'tailwind', icon: '/icons/tailwind.png' },
+    {id: 'jest', name: 'jest', icon: '/icons/jest.png' },
+    {id: 'x86', name: 'x86', icon: '/icons/x86.png' },
+    {id: 'aws', name: 'aws', icon: '/icons/aws.png' },
+    {id: 'flask', 'name': 'flask', 'icon': '/icons/flask.png'},
 ]
 
 
@@ -49,8 +82,8 @@ const myProjects = [
             'spec': '/images/smallsh.pdf',
             'snippet': '/icons/c.png',
             'technologies': [
-              {'name': 'C', 'icon': '/icons/c.png'},
-              {'name': 'linux', 'icon': '/icons/linux.png'}
+              {id: 'c', 'name': 'C', 'icon': '/icons/c.png'},
+              {id: 'linux', 'name': 'linux', 'icon': '/icons/linux.png'}
             ],
             'keywords': ['low-level programming', 'linux', 'operating systems']
         },
@@ -64,11 +97,11 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/node.png',
             'technologies': [
-                {'name': 'javascript', 'icon': '/icons/js.png'},
-                {'name': 'node', 'icon': '/icons/node.png'},
-                {'name': 'heroku', 'icon': '/icons/heroku.png'},
-                {'name': 'postgresql', 'icon': '/icons/postgresql.png'},
-                {'name': 'handlebars', 'icon': '/icons/handlebars.png'},
+                {id: 'javascript', 'name': 'javascript', 'icon': '/icons/js.png'},
+                {id: 'node', 'name': 'node', 'icon': '/icons/node.png'},
+                {id: 'heroku', 'name': 'heroku', 'icon': '/icons/heroku.png'},
+                {id: 'postgresql', 'name': 'postgresql', 'icon': '/icons/postgresql.png'},
+                {id: 'handlebars', 'name': 'handlebars', 'icon': '/icons/handlebars.png'},
 
             ],
             'keywords': ['web-development']
@@ -83,10 +116,10 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/flutter.png',
             'technologies': [
-                {'name': 'flutter', 'icon': '/icons/flutter.png'},
-                {'name': 'dart', 'icon': '/icons/dart.png'},
-                {'name': 'firebase', 'icon': '/icons/firebase.png'},
-                {'name': 'android', 'icon': '/icons/android.png'}
+                {id: 'flutter', 'name': 'flutter', 'icon': '/icons/flutter.png'},
+                {id: 'dart', 'name': 'dart', 'icon': '/icons/dart.png'},
+                {id: 'firebase', 'name': 'firebase', 'icon': '/icons/firebase.png'},
+                {id: 'android', 'name': 'android', 'icon': '/icons/android.png'}
             ],
             'keywords': ['mobile-development']
         },
@@ -100,10 +133,10 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/django.png',
             'technologies': [
-                {'name': 'python', 'icon': '/icons/python.png'},
-                {'name': 'django', 'icon': '/icons/django.png'},
-                {'name': 'sqlite', 'icon': '/icons/sqlite.png'},
-                {'name': 'heroku', 'icon': '/icons/heroku.png'}
+                {id: 'python', 'name': 'python', 'icon': '/icons/python.png'},
+                {id: 'django', 'name': 'django', 'icon': '/icons/django.png'},
+                {id: 'sqlite', 'name': 'sqlite', 'icon': '/icons/sqlite.png'},
+                {id: 'heroku', 'name': 'heroku', 'icon': '/icons/heroku.png'}
             ],
             'keywords': ['algorithms']
         },
@@ -117,11 +150,11 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/node.png',
             'technologies': [
-                {'name': 'javascript', 'icon': '/icons/js.png'},
-                {'name': 'node', 'icon': '/icons/node.png'},
-                {'name': 'heroku', 'icon': '/icons/heroku.png'},
-                {'name': 'postgresql', 'icon': '/icons/postgresql.png'},
-                {'name': 'handlebars', 'icon': '/icons/handlebars.png'},
+                {id: 'javascript', 'name': 'javascript', 'icon': '/icons/js.png'},
+                {id: 'node', 'name': 'node', 'icon': '/icons/node.png'},
+                {id: 'heroku', 'name': 'heroku', 'icon': '/icons/heroku.png'},
+                {id: 'postgresql', 'name': 'postgresql', 'icon': '/icons/postgresql.png'},
+                {id: 'handlebars', 'name': 'handlebars', 'icon': '/icons/handlebars.png'},
             ],
             'keywords': ['database']
         },
@@ -135,7 +168,7 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/python.png',
             'technologies': [
-                {'name': 'python', 'icon': '/icons/python.png'}
+                {id: 'python', 'name': 'python', 'icon': '/icons/python.png'}
             ],
             'keywords': ['database']
         },
@@ -149,11 +182,11 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/next.png',
             'technologies': [
-                {'name': 'next', 'icon': '/icons/next.png'},
-                {'name': 'react', 'icon': '/icons/react.png'},
-                {'name': 'firebase', 'icon': '/icons/firebase.png'},
-                {'name': 'tailwind', 'icon': '/icons/tailwind.png'},
-                {'name': 'jest', 'icon': '/icons/jest.png'},
+                {id: 'next', 'name': 'next', 'icon': '/icons/next.png'},
+                {id: 'react', 'name': 'react', 'icon': '/icons/react.png'},
+                {id: 'firebase', 'name': 'firebase', 'icon': '/icons/firebase.png'},
+                {id: 'tailwind', 'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+                {id: 'jest', 'name': 'jest', 'icon': '/icons/jest.png'},
             ],
             'keywords': ['database']
         },
@@ -167,7 +200,7 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/x86.png',
             'technologies': [
-                {'name': 'x86', 'icon': '/icons/x86.png'},
+                {id: 'x86', 'name': 'x86', 'icon': '/icons/x86.png'},
             ],
             'keywords': ['database']
         },
@@ -181,11 +214,29 @@ const myProjects = [
             'spec': '',
             'snippet': '/icons/react.png',
             'technologies': [
-                {'name': 'react', 'icon': '/icons/react.png'},
-                {'name': 'next', 'icon': '/icons/next.png'},
-                {'name': 'aws', 'icon': '/icons/aws.png'},
-                {'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+                {id: 'react', 'name': 'react', 'icon': '/icons/react.png'},
+                {id: 'next', 'name': 'next', 'icon': '/icons/next.png'},
+                {id: 'aws', 'name': 'aws', 'icon': '/icons/aws.png'},
+                {id: 'tailwind', 'name': 'tailwind', 'icon': '/icons/tailwind.png'},
             ],
             'keywords': ['database']
+        },
+        {
+            'id': 'mealcost',
+            'name': 'Meal Cost',
+            'course': 'NA',
+            'date': 'July 2022',
+            'description': 'Track the cost of meals and ingredients',
+            'repo': 'https://github.com/kiserd/meal-cost',
+            'spec': '',
+            'snippet': '/icons/flask.png',
+            'technologies': [
+                {id: 'flask', 'name': 'flask', 'icon': '/icons/flask.png'},
+                {id: 'python', name: 'python', icon: '/icons/python.png' },
+                {id: 'aws', 'name': 'aws', 'icon': '/icons/aws.png'},
+                {id: 'tailwind', 'name': 'tailwind', 'icon': '/icons/tailwind.png'},
+                {id: 'react', name: 'react', icon: '/icons/react.png' },
+            ],
+            'keywords': ['API']
         }
     ];
