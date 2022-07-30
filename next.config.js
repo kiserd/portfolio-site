@@ -1,14 +1,9 @@
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
 
-module.exports = withPlugins([
-  [optimizedImages, {
-    /* config for next-optimized-images */
-    handleImages: ['jpg', 'jpeg', 'png'],
-  }],
-
-  // your other plugins here
-
-], {
+module.exports = {
+  distDir: '.next',
   reactStrictMode: true,
-});
+  // to play nicely with docker
+  experimental: {
+    outputStandalone: true,
+  },
+}

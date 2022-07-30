@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 // component
 import TechIcon from "./TechIcon";
 
-const ProjectCard = ({ projectId }) => {
+const ProjectDetailsCard = ({ projectId }) => {
     const [projectData, setProjectData] = useState({});
     const [technologies, setTechnologies] = useState([])
 
@@ -61,4 +61,4 @@ const ProjectCard = ({ projectId }) => {
   )
 }
 
-export default ProjectCard;
+export default ProjectDetailsCard;
