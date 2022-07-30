@@ -1,6 +1,6 @@
 import EducationCard from "../components/EducationCard";
 
-const education = () => {
+const Education = () => {
     const eduList = [
         {
             'name': 'University of Washington',
@@ -29,4 +29,4 @@ const education = () => {
     )
 }
 
-export default education;
+export default Education;

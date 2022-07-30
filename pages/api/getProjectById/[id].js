@@ -1,6 +1,5 @@
-
+// db
 import { read } from '../../../db/dao'
-import db from '../../../aws/dbcon'
 
 // export default async function handler (req, res) {
 //     let id = req.query;

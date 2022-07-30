@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 // component
 import ProjectDetailsCard from '../../components/ProjectDetailsCard'
 
-const projectDetails = () => {
+const ProjectDetails = () => {
     // use router to determine project ID passed to dynamic page
     const router = useRouter()
     const projectId = router.query.id
@@ -30,4 +30,4 @@ const projectDetails = () => {
     )
 }
 
-export default projectDetails
+export default ProjectDetails
