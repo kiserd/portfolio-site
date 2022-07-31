@@ -1,6 +1,6 @@
 import EducationCard from "../components/EducationCard";
 
-const Education = () => {
+const education = () => {
     const eduList = [
         {
             'name': 'University of Washington',
@@ -22,11 +22,11 @@ const Education = () => {
         },
     ]
     return (
-        <div className='flex flex-col justify-items-center'>
+        <div className='flex flex-col justify-items-center bg-custom-background'>
             <EducationCard edu={eduList[0]} />
             <EducationCard edu={eduList[1]} />
         </div>
     )
 }
 
-export default Education;
+export default education;

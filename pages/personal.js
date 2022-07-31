@@ -1,7 +1,7 @@
 import PersonalCard from "../components/PersonalCard";
 import PersonalCollage from "../components/PersonalCollage";
 
-const Personal = () => {
+const personal = () => {
   return (
     <div className='flex flex-col justify-start justify-items-center'>
       <div className='w-3/4 max-w-4xl max-h-3xl p-2 flex self-center rounded-md'>
@@ -17,4 +17,4 @@ const Personal = () => {
   )
 }
 
-export default Personal;
+export default personal;
