@@ -1,5 +1,4 @@
 // library
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 // component
@@ -22,11 +21,10 @@ const ProjectDetailsCard = ({ projectId }) => {
   return (
       <div className='w-3/4 max-w-xl max-h-fit p-2 mb-4 flex self-center bg-custom-card rounded-md hover:bg-custom-hover' onClick={() => router.push('/projectDetails/' + projectId)}>
             <div className='flex'>
-                <div className='w-32 h-32 shrink-0 relative'>
-                    <Image 
+                <div className='w-32 h-32 shrink-0'>
+                    <img
+                    className='max-w-full max-h-full'
                     src={(!projectData.snippet) ? '/icons/react.png' : projectData.snippet}
-                    layout='fill'
-                    objectFit='contain'
                     />
                 </div>
                 <div className='self-start'>
@@ -36,7 +34,9 @@ const ProjectDetailsCard = ({ projectId }) => {
                     <div className='pl-6 flex flex-wrap relative'>
                         {projectData.technologies ? projectData.technologies.map((technology) => {
                             return (
-                                <TechIcon key={technology.id} source={technology.icon} />
+                                <div key={technology.id} className='mr-1 mb-1 w-10 h-10'>
+                                    <TechIcon source={technology.icon} />
+                                </div>
                             )
                         }) : 'Loading'}
                         <a href={projectData.repo}>
